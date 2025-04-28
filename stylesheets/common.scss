@@ -1,0 +1,13 @@
+.published-page-content-wrapper::after {
+  content: "Dynamic content added via CSS.";
+  display: block;
+  color: #007bff;
+  font-size: 18px;
+  margin-top: 15px;
+}
+
+.published-page-content-body {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+}

@@ -1,0 +1,74 @@
+// Theme's SCSS
+.hidden {
+  display: none;
+}
+.landing-page-content {
+  position: relative; /* Ensures proper stacking within the parent container */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.5
+  ); /* Sets a semi-transparent background */
+  z-index: 2; /* Keeps it above the video */
+}
+
+.landing-page {
+  position: relative;
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Places the video behind other elements */
+}
+
+.container {
+  width: 100%;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+body {
+  background: none;
+}
+
+#header {
+  background-color: transparent;
+  border: none;
+}
+
+section {
+  padding: 50px 0;
+}
+
+.navbar-fixed-bottom,
+.navbar-fixed-top {
+  position: absolute;
+}
+
+.row {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+header .intro-content {
+  position: absolute;
+  width: 80%;
+  bottom: -30px;
+  left: 43%;
+  text-align: left;
+  top: auto;
+}
+
+header .scroll-down {
+  position: absolute;
+  width: 100%;
+  bottom: 30px;
+  text-align: right;
+  padding-right: 50px;
+}
