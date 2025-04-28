@@ -9,7 +9,7 @@ export default class LandingPage extends Component {
   @service siteSettings;
 
   get shouldRender() {
-    const isHomePage = false && this.router.currentURL === "/";
+    const isHomePage = true && this.router.currentURL === "/";
     console.log("shouldRender is happening", this, this.background_video);
     // add hidden class to #main-outlet-wrapper if on home page
     return isHomePage;
