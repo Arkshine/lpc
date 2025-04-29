@@ -1,74 +1,394 @@
-// Theme's SCSS
-.hidden {
-  display: none;
-}
-.landing-page-content {
-  position: relative; /* Ensures proper stacking within the parent container */
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.5
-  ); /* Sets a semi-transparent background */
-  z-index: 2; /* Keeps it above the video */
-}
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;900&display=swap");
 
-.landing-page {
-  position: relative;
-}
+body.has-landing-page {
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
 
-.background-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1; /* Places the video behind other elements */
-}
-
-.container {
-  width: 100%;
-  padding-right: 0px;
-  padding-left: 0px;
-}
-
-body {
   background: none;
-}
+  overflow-x: hidden;
 
-#header {
-  background-color: transparent;
-  border: none;
-}
+  .d-header {
+    background: transparent;
+    box-shadow: none;
 
-section {
-  padding: 50px 0;
-}
+    .text-logo {
+      color: #fff;
+    }
+  }
 
-.navbar-fixed-bottom,
-.navbar-fixed-top {
-  position: absolute;
-}
+  .header-sidebar-toggle,
+  .sidebar-wrapper {
+    display: none;
+  }
 
-.row {
-  margin-right: 0px;
-  margin-left: 0px;
-}
+  &.has-sidebar-page #main-outlet-wrapper {
+    display: block;
+    max-width: 100%;
 
-header .intro-content {
-  position: absolute;
-  width: 80%;
-  bottom: -30px;
-  left: 43%;
-  text-align: left;
-  top: auto;
-}
+    #main-outlet {
+      padding-top: 0;
+    }
+  }
 
-header .scroll-down {
-  position: absolute;
-  width: 100%;
-  bottom: 30px;
-  text-align: right;
-  padding-right: 50px;
+  #main {
+    padding: 0;
+  }
+
+  .landing-page {
+    transition: opacity 0.5s linear;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    margin-top: calc(-1 * var(--header-offset));
+  }
+
+  .background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    max-height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .intro-content {
+    position: absolute;
+    left: 4%;
+    bottom: 30px;
+    width: 80%;
+
+    .brand-name {
+      font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 55px;
+      line-height: 55px;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-top: 15px;
+      color: white;
+    }
+  }
+
+  .scroll-down {
+    position: absolute;
+    right: 3em;
+    bottom: 30px;
+
+    .e-btn {
+      height: 50px;
+      width: 50px;
+      border: 2px solid white;
+      border-radius: 100% !important;
+      line-height: 50px;
+      padding: 0;
+      letter-spacing: normal;
+      color: white;
+      font-size: 25px;
+      transition: all 0.5s;
+      background: transparent;
+
+      svg {
+        color: white;
+
+        margin-right: inherit;
+      }
+    }
+  }
+
+  .about-content {
+    padding: 30px;
+
+    svg {
+      font-size: 4em;
+    }
+  }
+
+  .animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+
+  .e-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .e-btn {
+    border-radius: 0;
+    padding: 12px 18px;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 1px;
+    transition: all 0.5s;
+  }
+
+  .e-btn-outline-dark {
+    color: #222222;
+    border: 1px solid #222222;
+    background: transparent;
+    transition: all 0.5s;
+  }
+
+  .e-btn.focus,
+  .e-btn:focus,
+  .e-btn:hover {
+    color: #333;
+    text-decoration: none;
+  }
+
+  .e-btn.active,
+  .e-btn:active {
+    background-image: none;
+    outline: 0;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  }
+
+  .e-btn-outline-dark:hover,
+  .e-btn-outline-dark:focus {
+    color: white;
+    background: #2a2f78;
+    border-color: #2a2f78;
+    outline: none;
+  }
+
+  .e-btn-outline-light {
+    color: white;
+    border: 1px solid white;
+    background: transparent;
+    transition: all 0.5s;
+  }
+  .e-btn-outline-light:hover,
+  .e-btn-outline-light:focus {
+    color: #2a2f78;
+    background: white;
+    outline: none;
+  }
+
+  .e-btn-full-width {
+    border: 0;
+    border-radius: 0;
+    background-color: #222222;
+    color: white;
+    padding: 50px 0;
+    font-size: 26px;
+    font-weight: 200;
+    letter-spacing: normal;
+    text-transform: none;
+
+    &:hover {
+      background-color: #2a2f78;
+      color: white;
+    }
+
+    &:focus {
+      color: white;
+    }
+  }
+
+  .e-btn-block {
+    display: block;
+    width: 100%;
+  }
+
+  aside.cta-quote {
+    color: white;
+    background-color: #222222;
+    background: no-repeat center center scroll;
+    background-size: cover;
+    padding: 100px 0;
+    text-align: center;
+  }
+
+  aside.cta-quote span.quote {
+    display: block;
+    font-size: 30px;
+    line-height: 32px;
+    font-weight: 300;
+  }
+
+  @media (min-width: 768px) {
+    aside.cta-quote {
+      background-attachment: scroll;
+      padding: 150px 0;
+    }
+    aside.cta-quote span.quote {
+      font-size: 36px;
+      line-height: 38px;
+    }
+  }
+  @media (min-width: 992px) {
+    aside.cta-quote {
+      padding: 300px 0;
+    }
+    aside.cta-quote span.quote {
+      font-size: 40px;
+      line-height: 42px;
+    }
+  }
+  @media (min-width: 1025px) {
+    aside.cta-quote {
+      background-attachment: fixed;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-size: 52px;
+    font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    line-height: 1.1;
+    color: rgb(51, 51, 51);
+  }
+
+  h3 {
+    font-size: 24px;
+  }
+
+  section {
+    padding: 50px 0;
+  }
+
+  .container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @media (min-width: 1200px) {
+    .container {
+      width: 1170px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .container {
+      width: 970px;
+    }
+  }
+  @media (min-width: 768px) {
+    .container {
+      width: 750px;
+    }
+  }
+  .container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .container {
+    width: 100%;
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+
+  .row {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+
+  .content-row {
+    margin-top: 30px;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0 0 10px;
+    font-weight: 300;
+  }
+
+  @media (min-width: 1200px) {
+    .col-lg-12 {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .col-md-3 {
+      width: 25%;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .col-md-1,
+    .col-md-10,
+    .col-md-11,
+    .col-md-12,
+    .col-md-2,
+    .col-md-3,
+    .col-md-4,
+    .col-md-5,
+    .col-md-6,
+    .col-md-7,
+    .col-md-8,
+    .col-md-9 {
+      float: left;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .col-md-offset-1 {
+      margin-left: 8.33333333%;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .col-md-10 {
+      width: 83.33333333%;
+    }
+  }
+
+  @media (min-width: 992px) {
+    body.has-landing-page .col-md-10 {
+      width: 83.33333333%;
+    }
+  }
+
+  @media (min-width: 992px) {
+    body.has-landing-page .col-md-offset-1 {
+      margin-left: 8.33333333%;
+    }
+  }
 }

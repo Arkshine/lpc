@@ -9,5 +9,8 @@
   "minimum_discourse_version": null,
   "maximum_discourse_version": null,
   "assets": { "background_video": "assets/eclipse_web.mp4" },
-  "modifiers": {}
+  "modifiers": {
+    "custom_homepage": "true",
+    "svg_icons": ["comments", "heart", "key", "plane"]
+  }
 }
