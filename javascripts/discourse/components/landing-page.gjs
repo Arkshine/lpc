@@ -3,6 +3,7 @@ import { on } from "@ember/modifier";
 import { action } from "@ember/object";
 import didInsert from "@ember/render-modifiers/modifiers/did-insert";
 import willDestroy from "@ember/render-modifiers/modifiers/will-destroy";
+import { later } from "@ember/runloop";
 import { service } from "@ember/service";
 import icon from "discourse/helpers/d-icon";
 
@@ -27,20 +28,46 @@ export default class LandingPage extends Component {
     event.preventDefault();
   }
 
+  @action
+  insertVideo(element) {
+    const oldVideo = element.querySelector("video.background-video");
+    if (oldVideo) {
+      oldVideo.remove();
+    }
+
+    const video = document.createElement("video");
+    video.setAttribute("autoplay", "");
+    video.setAttribute("muted", "");
+    video.setAttribute("loop", "");
+    video.setAttribute("playsinline", "");
+    video.className = "background-video";
+
+    const source = document.createElement("source");
+    source.src = settings.theme_uploads.background_video;
+    source.type = "video/mp4";
+    video.appendChild(source);
+    video.appendChild(
+      document.createTextNode("Your browser does not support the video tag.")
+    );
+
+    element.insertBefore(video, element.firstChild);
+
+    video.addEventListener(
+      "loadeddata",
+      () => {
+        video.play();
+      },
+      { once: true }
+    );
+  }
+
   <template>
     <div
       class="landing-page"
+      {{didInsert this.insertVideo}}
       {{didInsert this.addClass}}
       {{willDestroy this.removeClass}}
     >
-      <video autoplay muted loop playsinline class="background-video">
-        <source
-          src="{{settings.theme_uploads.background_video}}"
-          type="video/mp4"
-        />
-        Your browser does not support the video tag.
-      </video>
-
       <div class="intro-content">
         <div class="brand-name">Welcome to the Eclipse Jet Owners &amp; Pilots
           Association</div>
@@ -73,7 +100,7 @@ export default class LandingPage extends Component {
           <div class="row text-center content-row">
             <div class="col-md-3 col-sm-6 wow">
               <div class="about-content">
-                {{icon "comments"}}
+                {{icon "comments-o"}}
                 <h3>Experienced Community</h3>
                 <p style="text-align: left">
                   EJOPA's active forums provides essential information on all
